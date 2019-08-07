@@ -12,15 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('main');
+    return view('welcome');
 });
 
-Route::get('/reading-list', function () {
-    $readingList = ['Dune', 'Frankenstein', '1984'];
+Route::get('/reading-list', 'HomeController@list')->middleware('auth');
 
-    return view('list', ['readingList' => $readingList]);
-});
+Route::get('/add', 'HomeController@add')->middleware('auth');
 
-Route::get('/add', function () {
-    return view('add');
-});
+Auth::routes();
