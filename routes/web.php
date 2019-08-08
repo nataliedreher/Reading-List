@@ -15,8 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Frontend routing handled via HomeController with auth middleware
 Route::get('/reading-list', 'HomeController@list')->middleware('auth');
-
 Route::get('/add', 'HomeController@add')->middleware('auth');
+Route::post('/create/book', 'HomeController@store');
 
 Auth::routes();

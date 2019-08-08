@@ -10,8 +10,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -35,19 +33,18 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <li>
-                        <a class="navbar-brand" href="{{ url('/add') }}">
-                            Add
-                        </a>
-                    </li>
-                    <li>
-                        <a class="navbar-brand" href="{{ url('/reading-list') }}">
-                            List
-                        </a>
-                    </li>
 
                     <ul class="navbar-nav mr-auto">
-
+                        <li>
+                            <a class="navbar-brand" href="{{ url('/add') }}">
+                                Add
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-brand" href="{{ url('/reading-list') }}">
+                                List
+                            </a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -88,10 +85,12 @@
         </nav>
 
         <main class="py-4">
+            <!-- Yielding to content provided by page blades -->
             @yield('content')
         </main>
     </div>
 
+    <!-- Scripts -->
     <script src="/js/manifest.js"></script>
     <script src="/js/vendor.js"></script>
     <script src="/js/app.js"></script>

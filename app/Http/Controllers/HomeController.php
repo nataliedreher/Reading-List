@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Book;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -35,9 +37,22 @@ class HomeController extends Controller
 
     public function list()
     {
-        $readingList = ['Dune', 'Frankenstein', '1984'];
+        $readingList = Book::all()
+            ->where('email',  Auth::user()->email);
 
         return view('list', ['readingList' => $readingList]);
     }
 
+    public function store()
+    {
+        $book = new Book;
+        $book->email = Auth::user()->email;
+        $book->author = request('author');
+        $book->title = request('title');
+        $book->subtitle = request('subtitle');
+        $book->description = request('description');
+        $book->save();
+
+        return redirect('/reading-list');
+    }
 }

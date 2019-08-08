@@ -43,29 +43,34 @@ function displayBookInfo() {
         var subtitle = data[i].volumeInfo.subtitle;
         var description = data[i].volumeInfo.description; // Variables containing jQuery to be appended to the page.
 
-        var jumbotron = $('<div class="jumbotron" id="book' + i + '">');
-        var pAuthor = $('<p>').text('Author: ' + author);
-        var pTitle = $('<p>').text('Title: ' + title); // Below is where the appending happens, the ifs are for fields that may not be
+        var jumbotron = '<div class="jumbotron" id="book' + i + '"><form method="POST" action="/create/book">';
+        var pAuthor = '<p><strong>Author:</strong> ' + author;
+        var pTitle = '<p><strong>Title:</strong> ' + title;
+        console.log(pAuthor); // Below is where the appending happens, the ifs are for fields that may not be
         // included in the ajax responce. If they aren't included the error kills the
         // loop and it stops appending. #baduserexperience
 
-        jumbotron.append(pAuthor);
-        jumbotron.append(pTitle);
+        jumbotron += pAuthor;
+        jumbotron += '<input type="hidden" name="author" value="' + author + '">';
+        jumbotron += pTitle;
+        jumbotron += '<input type="hidden" name="title" value="' + title + '">';
 
         if (subtitle) {
-          var pSubtitle = $('<p>').text('Subtitle: ' + subtitle);
-          jumbotron.append(pSubtitle);
+          var pSubtitle = '<p><strong>Subtitle:</strong> ' + subtitle;
+          jumbotron += pSubtitle;
+          jumbotron += '<input type="hidden" name="subtitle" value="' + subtitle + '">';
         }
 
         ;
 
         if (description) {
-          var pDesc = $('<p>').text('Description: ' + description);
-          jumbotron.append(pDesc);
+          var pDesc = '<p><strong>Description:</strong> ' + description;
+          jumbotron += pDesc;
+          jumbotron += '<input type="hidden" name="description" value="' + description + '">';
         }
 
         ;
-        jumbotron.append('<button class="btn btn-primary book-add" type="button" data-id="' + i + '">Add to Reading List</button>');
+        jumbotron += '<br><button class="btn btn-primary book-add" type="submit" data-id="' + i + '">Add to Reading List</button>';
         $('#book-list').append(jumbotron);
       }
     }).fail(function (err) {
@@ -91,7 +96,8 @@ function displayBookInfo() {
 $(document).on('click', '#search-btn', displayBookInfo); // The onclick event handler for adding books via front and back end API calls/routing.
 
 $(document).on('click', '.book-add', function () {
-  alert('hi');
+  console.log($('#book-list').data('user'));
+  var user = $('#book-list').data('user');
 });
 
 /***/ }),
