@@ -61,7 +61,6 @@ class BooksController extends Controller
         $book->title = request('title');
         $book->subtitle = request('subtitle');
         $book->description = request('description');
-        $book->read_order = $readOrderNum;
         $book->save();
 
         return redirect('/books');
