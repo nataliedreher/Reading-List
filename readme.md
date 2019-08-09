@@ -31,4 +31,4 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 * [Portfolio](http://www.nataliedreher.com/)
 * [LinkedIn](https://www.linkedin.com/in/natalie-dreher/)
 * [Github](https://github.com/natalied84/)
-* [Web site](http://whispering-temple-40488.herokuapp.com/)
+* [Website](http://whispering-temple-40488.herokuapp.com/)
