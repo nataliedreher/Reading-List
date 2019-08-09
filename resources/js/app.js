@@ -44,7 +44,6 @@ function displayBookInfo() {
                 var jumbotron = '<div class="jumbotron" id="book' + i + '"><form method="POST" action="/books">';
                 var pAuthor = '<p><strong>Author:</strong> ' + author;
                 var pTitle = '<p><strong>Title:</strong> ' + title;
-                console.log(pAuthor)
 
                 // Below is where the appending happens, the ifs are for fields that may not be
                 // included in the ajax responce. If they aren't included the error kills the
@@ -85,10 +84,3 @@ function displayBookInfo() {
 
 // The onclick event handler for searching books/authors via the google books api.
 $(document).on('click', '#search-btn', displayBookInfo);
-
-// The onclick event handler for adding books via front and back end API calls/routing.
-$(document).on('click', '.book-add', function () {
-    console.log($('#book-list').data('user'));
-    var user = $('#book-list').data('user');
-
-});

@@ -25,9 +25,12 @@
                                 Title: {{ $book->title }} | Author: {{ $book->author }}
                             </button>
                             <ul class="list-inline float-right">
+                                <!-- The following two list items below are conditionally rendered because updating the order of the DB
+                                    only makes sense in the default view -->
                                 @if($unsorted)
                                 <li class="list-inline-item">
                                     <form method="POST" action="/books/update/{{ $book->id }}">
+                                        <!-- Cross-Site Request Forgery token, API Method, and hidden diretionc value input -->
                                         @csrf
                                         @method("PATCH")
                                         <input type="hidden" name="direction" value="up" />
@@ -36,6 +39,7 @@
                                 </li>
                                 <li class="list-inline-item">
                                     <form method="POST" action="/books/update/{{ $book->id }}">
+                                        <!-- Cross-Site Request Forgery token, API Method, and hidden diretionc value input -->
                                         @csrf
                                         @method("PATCH")
                                         <input type="hidden" name="direction" value="down" />
@@ -45,6 +49,7 @@
                                 @endif
                                 <li class="list-inline-item">
                                     <form action="/books/delete/{{ $book->id }}" method="POST">
+                                        <!-- Cross-Site Request Forgery token and API Method-->
                                         @method("DELETE")
                                         <button type="submit" class="btn btn-link">Remove</button>
                                     </form>
@@ -52,10 +57,17 @@
                             </ul>
                         </h2>
                     </div>
+                    <!-- Collapsing details section. The if is to add the subtitle if there is one. -->
                     <div id="collapse{{ $book->id }}" class="collapse" aria-labelledby="heading{{ $book->id }}"
                         data-parent="#book-accordian">
                         <div class="card-body">
-                            {{ $book->description }}
+                            <p><strong>Author: </strong>{{ $book->author }}</p>
+                            @if($book->subtitle)
+                            <p><strong>Title: </strong>{{ $book->title }}: {{ $book->subtitle }}</p>
+                            @else
+                            <p><strong>Title: </strong>{{ $book->title }}</p>
+                            @endif
+                            <p><strong>Description: </strong>{{ $book->description }}</p>
                         </div>
                     </div>
                 </div>

@@ -68,34 +68,34 @@ class BooksController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * This route is purposefully being used in an unconvetional manner. It's to "show" the books in different orders.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($sortMethod)
     {
-        $unsorted= false;
+        $unsorted = false;
         if ($sortMethod === 'byauthor') {
 
+            // Query to sort by author
             $readingList = Book::all()
                 ->where('email',  Auth::user()->email)
                 ->sortBy('author');
-
             return view('books.index', ['readingList' => $readingList, 'unsorted' => $unsorted]);
         } elseif ($sortMethod === 'bytitle') {
 
+            // Query to sort by title
             $readingList = Book::all()
                 ->where('email',  Auth::user()->email)
                 ->sortBy('title');
-
             return view('books.index', ['readingList' => $readingList, 'unsorted' => $unsorted]);
         } elseif ($sortMethod === 'bydate') {
 
+            // Query to sort by date
             $readingList = Book::all()
                 ->where('email',  Auth::user()->email)
                 ->sortBy('created_at');
-
             return view('books.index', ['readingList' => $readingList, 'unsorted' => $unsorted]);
         } else {
             return redirect('/books');
@@ -122,26 +122,28 @@ class BooksController extends Controller
      */
     public function update($id)
     {
-        // First set
+        // First set variables needed for both sorting directions
         $book1 = Book::find($id);
         $queryIdArray = Book::all()
             ->pluck('id');
         $queryIndex = array_search($book1->id, $queryIdArray->all());
 
-
+        // Check for direction and if said direction change is valid
         if (request('direction') === 'up' && $queryIndex > 0) {
+
+            // If moving book up first grab data from line above it then update both lines with new data
             $idTwo = $queryIdArray[$queryIndex - 1];
             $book2 = Book::find($idTwo);
-
             Book::find($idTwo)
                 ->update(['author' => $book1->author, 'title' => $book1->title, 'subtitle' => $book1->subtitle, 'description' => $book1->description, 'created_at' => $book1->created_at,]);
             Book::find($id)
                 ->update(['author' => $book2->author, 'title' => $book2->title, 'subtitle' => $book2->subtitle, 'description' => $book2->description, 'created_at' => $book2->created_at,]);
             return redirect('/books');
         } elseif (request('direction') === 'down' && $queryIndex < count($queryIdArray) - 1) {
+
+            // If moving book down first grab data from line below it then update both lines with new data
             $idTwo = $queryIdArray[$queryIndex + 1];
             $book2 = Book::find($idTwo);
-
             Book::find($idTwo)
                 ->update(['author' => $book1->author, 'title' => $book1->title, 'subtitle' => $book1->subtitle, 'description' => $book1->description, 'created_at' => $book1->created_at,]);
             Book::find($id)

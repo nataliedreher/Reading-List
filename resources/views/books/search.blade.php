@@ -19,6 +19,7 @@
     <div class="input-group mb-3">
         <input type="text" class="form-control" id="book-input" placeholder="Author or Title"
             aria-label="Author or Title" aria-describedby="button-addon2">
+            @csrf
         <div class="input-group-append">
         <button class="btn btn-primary" type="button" id="search-btn">Search</button>
         </div>

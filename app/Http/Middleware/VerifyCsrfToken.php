@@ -19,6 +19,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
+        // Ideally this would get removed from this list
         '/books'
     ];
 }

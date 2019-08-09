@@ -11,6 +11,7 @@
 |
 */
 
+// There's only one home route so using a controller doesn't make sense.
 Route::get('/', function () {
 
     return view('welcome');
@@ -26,16 +27,16 @@ Route::get('/books', 'BooksController@index')->middleware('auth');
 Route::get('/books/show/{sortMethod}', 'BooksController@show')->middleware('auth');
 
 // Books PATCH routes to UPDATE the read_order of the books in the DB
-Route::patch('/books/update/{id}', 'BooksController@update');
+Route::patch('/books/update/{id}', 'BooksController@update')->middleware('auth');
 
 // Books DELETE route to DELETE books from the DB
-Route::delete('/books/delete/{id}', 'BooksController@destroy');
+Route::delete('/books/delete/{id}', 'BooksController@destroy')->middleware('auth');
 
 // Search page GET view route, I chose search for the URI
 Route::get('/books/search', 'BooksController@search')->middleware('auth');
 
 // Search page POST route to CREATE a new book in the DB
-Route::post('/books', 'BooksController@store');
+Route::post('/books', 'BooksController@store')->middleware('auth');
 
 // Laravel generated Authorization routes
 Auth::routes();
