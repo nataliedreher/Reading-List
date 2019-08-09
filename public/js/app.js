@@ -93,6 +93,12 @@ function displayBookInfo() {
 ; // The onclick event handler for searching books/authors via the google books api.
 
 $(document).on('click', '#search-btn', displayBookInfo);
+$(document).on('keypress', '#book-input', function (e) {
+  if (e.keyCode === 13) {
+    // If Enter key pressed
+    displayBookInfo();
+  }
+});
 
 /***/ }),
 
