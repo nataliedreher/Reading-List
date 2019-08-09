@@ -41,7 +41,7 @@ function displayBookInfo() {
                 var description = data[i].volumeInfo.description;
 
                 // Variables containing jQuery to be appended to the page.
-                var jumbotron = '<div class="jumbotron" id="book' + i + '"><form method="POST" action="/create/book">';
+                var jumbotron = '<div class="jumbotron" id="book' + i + '"><form method="POST" action="/books">';
                 var pAuthor = '<p><strong>Author:</strong> ' + author;
                 var pTitle = '<p><strong>Title:</strong> ' + title;
                 console.log(pAuthor)

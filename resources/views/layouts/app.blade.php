@@ -36,12 +36,12 @@
 
                     <ul class="navbar-nav mr-auto">
                         <li>
-                            <a class="navbar-brand" href="{{ url('/add') }}">
-                                Add
+                            <a class="navbar-brand" href="{{ url('/books/search') }}">
+                                Search
                             </a>
                         </li>
                         <li>
-                            <a class="navbar-brand" href="{{ url('/reading-list') }}">
+                            <a class="navbar-brand" href="{{ url('/books') }}">
                                 List
                             </a>
                         </li>
