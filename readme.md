@@ -22,13 +22,13 @@ full authentication and a MySQL database to allow users to access their lists fr
 
 ## Bug / Feature Request
 
-If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an issue [here](https://github.com/natalied84/Reading-List/issues/new) by including your search query and the expected result.
+If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an issue [here](https://github.com/nataliedreher/Reading-List/issues/new) by including your search query and the expected result.
 
-If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/natalied84/Reading-List/issues/new).
+If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/nataliedreher/Reading-List/issues/new).
 
 ### Links
 
 * [Portfolio](http://www.nataliedreher.com/)
 * [LinkedIn](https://www.linkedin.com/in/natalie-dreher/)
-* [Github](https://github.com/natalied84/)
+* [Github](https://github.com/nataliedreher/)
 * [Website](http://whispering-temple-40488.herokuapp.com/)
